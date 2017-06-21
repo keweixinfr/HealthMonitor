@@ -62,7 +62,7 @@ public class RapporterEffet extends AppCompatActivity implements DataApi.DataLis
                 .addOnConnectionFailedListener(this)
                 .build();
     }
-
+    //creat menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);//这里的main指的是menu的xml文件的名字
