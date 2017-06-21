@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">HealthMonitoring</string>
+    <string name="app_name">HealthMonitor</string>
     <string name="prise_de_medicament">Prendre le médicament</string>
     <string name="rapporter_effet">Rapporter un effet indésirable</string>
     <string name="copy">COPIER</string>

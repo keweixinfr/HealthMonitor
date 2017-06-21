@@ -30,4 +30,26 @@
         android:text="@string/rapporter_effet" />
         <!--android:onClick="URL2RAPPORTRE_UN_EFFET"-->
 
+    <EditText
+        android:id="@+id/et_token"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rapport_button"
+        android:layout_marginTop="40dp"
+        android:hint="Votre Jeton"
+
+        />
+    <Button
+        android:id="@+id/bt_token"
+        android:layout_below="@+id/et_token"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="Confirmer"
+        />
+    <TextView
+        android:id="@+id/tv_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 </RelativeLayout>
