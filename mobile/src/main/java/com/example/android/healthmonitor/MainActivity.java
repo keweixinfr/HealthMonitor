@@ -9,20 +9,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.List;
 import java.util.Scanner;
 
 public class MainActivity extends AppCompatActivity {
@@ -32,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 //    public static final String RAPPORTRE_UN_EFFET = "https://s4proj15.ddns.net/index.php/534181?lang=fr";
     private TextView mSearchResult;
     private EditText mSearchObject;
-    private Button mSearchButton;
+    private ImageButton mSearchButton;
     String SEARCHURL = "https://s4proj15.ddns.net/request_surveyID.php?token=";
     String intentTokenPath = "com.example.android.healthmonitor.usertoken";
     private String token;
@@ -43,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mSearchResult =(TextView) findViewById(R.id.tv_hint);
         mSearchObject = (EditText) findViewById(R.id.et_token);
-        mSearchButton = (Button) findViewById(R.id.bt_confirm);
+        mSearchButton = (ImageButton) findViewById(R.id.bt_confirm);
         mSearchButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 token = mSearchObject.getText().toString();

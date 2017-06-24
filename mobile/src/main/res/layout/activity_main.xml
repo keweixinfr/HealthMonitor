@@ -24,6 +24,7 @@
         />
     <EditText
         android:id="@+id/et_token"
+        android:background="@drawable/edittextstyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_hint"
@@ -33,16 +34,24 @@
         android:textSize="25dp"
         android:hint="Votre Jeton"/>
 
-    <Button
+    <!--<Button-->
+        <!--android:id="@+id/bt_confirm"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/et_token"-->
+        <!--android:layout_marginTop="40dp"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:textSize="25dp"-->
+        <!--android:background="@drawable/ic_send"/>-->
+    <ImageButton
         android:id="@+id/bt_confirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/et_token"
         android:layout_marginTop="40dp"
         android:layout_centerHorizontal="true"
-        android:textSize="25dp"
-        android:text="Entrer"/>
-
+        android:background="@null"
+        android:src="@drawable/ic_send" />
 
 
     <!--<Button-->
