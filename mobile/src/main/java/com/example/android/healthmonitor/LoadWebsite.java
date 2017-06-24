@@ -31,7 +31,7 @@ import com.google.android.gms.wearable.Wearable;
 
 import java.util.concurrent.TimeUnit;
 
-public class RapporterEffet extends AppCompatActivity implements DataApi.DataListener,GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+public class LoadWebsite extends AppCompatActivity implements DataApi.DataListener,GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     private String URL2load;
     //Webview defined in the class because methode onKeyDown need this variable
@@ -73,7 +73,7 @@ public class RapporterEffet extends AppCompatActivity implements DataApi.DataLis
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemThatWasClickedId = item.getItemId();
         if (itemThatWasClickedId == R.id.action_copy) {
-            Context context = RapporterEffet.this;
+            Context context = LoadWebsite.this;
             checkNodeAPI();
             String textToShow;
             if (mWearableConnected) {

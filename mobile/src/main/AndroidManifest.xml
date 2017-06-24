@@ -16,7 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".PrisedeMedicament" />
-        <activity android:name=".RapporterEffet" />
+        <activity android:name=".LoadWebsite" />
         <activity android:name=".ChoseSurvey"></activity>
     </application>
 

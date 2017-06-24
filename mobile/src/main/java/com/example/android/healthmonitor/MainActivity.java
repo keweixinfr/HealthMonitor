@@ -44,13 +44,15 @@ public class MainActivity extends AppCompatActivity {
         mSearchButton = (Button) findViewById(R.id.bt_confirm);
         mSearchButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                String searchObject = mSearchObject.getText().toString();
+                String token = mSearchObject.getText().toString();
                 // check there is a token in the edittext
                 if (mSearchObject.getText().length()!=0){
-                    String token = mSearchObject.getText().toString();
-                    new RequestServer().execute(SEARCHURL + searchObject);
+                    mSearchResult.setText("");
+                    new RequestServer().execute(SEARCHURL + token);
                     //setEnabled is to make sure the patient won't click twice
                     mSearchButton.setEnabled(false);
+
+
                 }
                 else {
                     mSearchResult.setText("Merci de donner un token!");
@@ -76,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
 //            @Override
 //            public void onClick(View v) {
 //                Context context = MainActivity.this;
-//                Class destinationActivity = RapporterEffet.class;
+//                Class destinationActivity = LoadWebsite.class;
 //                Intent startChildActivityIntent = new Intent(context, destinationActivity);
 //                startChildActivityIntent.putExtra(Intent.EXTRA_TEXT, RAPPORTRE_UN_EFFET);
 //                startActivity(startChildActivityIntent);
@@ -101,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
         protected String doInBackground(String... params) {
             //Send the Http request
             requestURL = params[0];
+            Log.w("HHHHH", "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             URL urlRequest = null;
             try {
                 urlRequest = new URL(requestURL);
