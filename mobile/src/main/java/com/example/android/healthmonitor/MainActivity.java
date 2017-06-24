@@ -34,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText mSearchObject;
     private Button mSearchButton;
     String SEARCHURL = "https://s4proj15.ddns.net/request_surveyID.php?token=";
+    String intentTokenPath = "com.example.android.healthmonitor.usertoken";
+    private String token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         mSearchButton = (Button) findViewById(R.id.bt_confirm);
         mSearchButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                String token = mSearchObject.getText().toString();
+                token = mSearchObject.getText().toString();
                 // check there is a token in the edittext
                 if (mSearchObject.getText().length()!=0){
                     mSearchResult.setText("");
@@ -148,6 +150,7 @@ public class MainActivity extends AppCompatActivity {
                 Class destinationActivity = ChoseSurvey.class;
                 Intent startChildActivityIntent = new Intent(context, destinationActivity);
                 startChildActivityIntent.putExtra(Intent.EXTRA_TEXT, s);
+                startChildActivityIntent.putExtra(intentTokenPath,token);
                 startActivity(startChildActivityIntent);
 
             }

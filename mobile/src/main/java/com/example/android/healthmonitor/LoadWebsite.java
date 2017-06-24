@@ -40,12 +40,17 @@ public class LoadWebsite extends AppCompatActivity implements DataApi.DataListen
     private boolean mWearableConnected = false;
     private boolean receivedRate = false;
     private WebView myWebView;
+    String intentTokenPath = "com.example.android.healthmonitor.usertoken";
+    private String token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prisede_medicament);
         Intent intentCaught = getIntent();
+        if (intentCaught.hasExtra(intentTokenPath)) {
+            token=intentCaught.getStringExtra(intentTokenPath);
+        }
         if (intentCaught.hasExtra(Intent.EXTRA_TEXT)) {
             //  If the Intent contains the correct extra, retrieve the text
             URL2load = intentCaught.getStringExtra(Intent.EXTRA_TEXT);
@@ -53,7 +58,7 @@ public class LoadWebsite extends AppCompatActivity implements DataApi.DataListen
 
         myWebView = (WebView) findViewById(R.id.webview);
         myWebView.getSettings().setJavaScriptEnabled(true);
-        final String autofilCommand ="javascript:(function() { document.getElementById('token').value = '" + "T1" + "'; ;})()";
+        final String autofilCommand ="javascript:(function() { document.getElementById('token').value = '" + token + "'; ;})()";
         myWebView.setWebViewClient(new WebViewClient(){
             @Override
             public void onPageFinished(WebView view, String url) {

@@ -22,12 +22,17 @@ public class ChoseSurvey extends AppCompatActivity {
     List<String> surveyNames = new ArrayList<String>();
     List<Integer> surveyID = new ArrayList<Integer>();
     private String destinationURL;
+    String intentTokenPath = "com.example.android.healthmonitor.usertoken";
+    private String token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chose_survey);
         Intent intentCaught = getIntent();
+        if (intentCaught.hasExtra(intentTokenPath)) {
+            token=intentCaught.getStringExtra(intentTokenPath);
+        }
         if (intentCaught.hasExtra(Intent.EXTRA_TEXT))
         {
             //  If the Intent contains the correct extra, retrieve the text
@@ -57,6 +62,7 @@ public class ChoseSurvey extends AppCompatActivity {
             Intent startChildActivityIntent = new Intent(context, destinationActivity);
             destinationURL = "https://s4proj15.ddns.net/index.php/"+surveyID.get((int)id);
             startChildActivityIntent.putExtra(Intent.EXTRA_TEXT, destinationURL);
+            startChildActivityIntent.putExtra(intentTokenPath, token);
             startActivity(startChildActivityIntent);
         }
     };
