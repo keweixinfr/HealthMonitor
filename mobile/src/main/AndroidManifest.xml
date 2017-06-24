@@ -15,7 +15,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PrisedeMedicament" />
         <activity android:name=".LoadWebsite" />
         <activity android:name=".ChoseSurvey"></activity>
     </application>
