@@ -52,10 +52,17 @@ public class LoadWebsite extends AppCompatActivity implements DataApi.DataListen
         }
 
         myWebView = (WebView) findViewById(R.id.webview);
-
         myWebView.getSettings().setJavaScriptEnabled(true);
-        myWebView.setWebViewClient(new WebViewClient());
+        final String autofilCommand ="javascript:(function() { document.getElementById('token').value = '" + "T1" + "'; ;})()";
+        myWebView.setWebViewClient(new WebViewClient(){
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+                myWebView.loadUrl(autofilCommand);
+            }
+        });
         myWebView.loadUrl(URL2load);
+        //myWebView.loadUrl("javascript:(function() { document.getElementById('last_name').value = '" + "T1" + "'; ;})()");
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addApi(Wearable.API)
                 .addConnectionCallbacks(this)
