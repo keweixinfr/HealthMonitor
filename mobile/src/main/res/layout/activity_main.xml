@@ -12,6 +12,14 @@
 
 
 
+    <ProgressBar
+        android:id="@+id/pb_loading_indicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:visibility="invisible"
+        />
     <TextView
         android:id="@+id/tv_hint"
         android:layout_width="wrap_content"

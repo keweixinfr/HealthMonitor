@@ -1,5 +1,6 @@
 package com.example.android.healthmonitor;
 
+import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -11,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
@@ -31,6 +33,9 @@ import com.google.android.gms.wearable.Wearable;
 
 import java.util.concurrent.TimeUnit;
 
+import static android.R.id.progress;
+import static com.example.android.healthmonitor.R.id.progressBar;
+
 public class LoadWebsite extends AppCompatActivity implements DataApi.DataListener,GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     private String URL2load;
@@ -47,6 +52,7 @@ public class LoadWebsite extends AppCompatActivity implements DataApi.DataListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prisede_medicament);
+        final Activity activity = this;
         Intent intentCaught = getIntent();
         if (intentCaught.hasExtra(intentTokenPath)) {
             token=intentCaught.getStringExtra(intentTokenPath);
@@ -65,6 +71,7 @@ public class LoadWebsite extends AppCompatActivity implements DataApi.DataListen
                 super.onPageFinished(view, url);
                 myWebView.loadUrl(autofilCommand);
             }
+
         });
         myWebView.loadUrl(URL2load);
         //myWebView.loadUrl("javascript:(function() { document.getElementById('last_name').value = '" + "T1" + "'; ;})()");

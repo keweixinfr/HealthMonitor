@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.io.IOException;
@@ -27,9 +28,20 @@ public class MainActivity extends AppCompatActivity {
     private TextView mSearchResult;
     private EditText mSearchObject;
     private ImageButton mSearchButton;
+    private ProgressBar mLoadingIndicator;
     String SEARCHURL = "https://s4proj15.ddns.net/request_surveyID.php?token=";
     String intentTokenPath = "com.example.android.healthmonitor.usertoken";
     private String token;
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        mLoadingIndicator.setVisibility(View.INVISIBLE);
+        mSearchButton.setVisibility(View.VISIBLE);
+        mSearchResult.setVisibility(View.VISIBLE);
+        mSearchObject.setVisibility(View.VISIBLE);
+        mSearchButton.setEnabled(true);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         mSearchResult =(TextView) findViewById(R.id.tv_hint);
         mSearchObject = (EditText) findViewById(R.id.et_token);
         mSearchButton = (ImageButton) findViewById(R.id.bt_confirm);
+        mLoadingIndicator = (ProgressBar) findViewById(R.id.pb_loading_indicator);
         mSearchButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 token = mSearchObject.getText().toString();
@@ -48,13 +61,15 @@ public class MainActivity extends AppCompatActivity {
                     //setEnabled is to make sure the patient won't click twice
                     mSearchButton.setEnabled(false);
 
-
                 }
                 else {
                     mSearchResult.setText("Merci de donner un token!");
                 }
             }
         });
+
+
+
 
 
 //        mPrendreMedicamentButton = (Button) findViewById(R.id.prise_button);
@@ -93,13 +108,17 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+            mLoadingIndicator.setVisibility(View.VISIBLE);
+            mSearchButton.setVisibility(View.INVISIBLE);
+            mSearchResult.setVisibility(View.INVISIBLE);
+            mSearchObject.setVisibility(View.INVISIBLE);
         }
 
         @Override
         protected String doInBackground(String... params) {
             //Send the Http request
             requestURL = params[0];
-            Log.w("HHHHH", "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+
             URL urlRequest = null;
             try {
                 urlRequest = new URL(requestURL);
@@ -137,6 +156,10 @@ public class MainActivity extends AppCompatActivity {
 
             //TODO: need deal with the case when Token is wrong, if wrong token, s == "[]", when we should do
             if (jsonStr.length() <=4){
+                mLoadingIndicator.setVisibility(View.INVISIBLE);
+                mSearchButton.setVisibility(View.VISIBLE);
+                mSearchResult.setVisibility(View.VISIBLE);
+                mSearchObject.setVisibility(View.VISIBLE);
                 mSearchResult.setText("Votre jeton n'est pas correct, merci de donner un autre jeton");
                 mSearchButton.setEnabled(true);
             }else{
