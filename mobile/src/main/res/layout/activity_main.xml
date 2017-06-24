@@ -10,46 +10,62 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.android.healthmonitor.MainActivity">
 
-    <Button
-        android:id="@+id/prise_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:layout_centerHorizontal="true"
-        android:text="@string/prise_de_medicament"/>
-        <!--android:onClick="URL2PRISE_DE_MEDICAMENT"-->
 
 
-    <Button
-        android:id="@+id/rapport_button"
+    <TextView
+        android:id="@+id/tv_hint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/prise_button"
-        android:layout_marginTop="80dp"
-        android:text="@string/rapporter_effet" />
-        <!--android:onClick="URL2RAPPORTRE_UN_EFFET"-->
-
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="100dp"
+        android:layout_gravity="left"
+        android:textSize="25dp"
+        />
     <EditText
         android:id="@+id/et_token"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/rapport_button"
+        android:layout_below="@+id/tv_hint"
         android:layout_marginTop="40dp"
-        android:hint="Votre Jeton"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+        android:textSize="25dp"
+        android:hint="Votre Jeton"/>
 
-        />
     <Button
-        android:id="@+id/bt_token"
-        android:layout_below="@+id/et_token"
+        android:id="@+id/bt_confirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:text="Confirmer"
-        />
-    <TextView
-        android:id="@+id/tv_result"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_below="@+id/et_token"
+        android:layout_marginTop="40dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="25dp"
+        android:text="Entrer"/>
+
+
+
+    <!--<Button-->
+        <!--android:id="@+id/prise_button"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="80dp"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:text="@string/prise_de_medicament"/>-->
+        <!--&lt;!&ndash;android:onClick="URL2PRISE_DE_MEDICAMENT"&ndash;&gt;-->
+
+
+    <!--<Button-->
+        <!--android:id="@+id/rapport_button"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_below="@id/prise_button"-->
+        <!--android:layout_marginTop="80dp"-->
+        <!--android:text="@string/rapporter_effet" />-->
+        <!--&lt;!&ndash;android:onClick="URL2RAPPORTRE_UN_EFFET"&ndash;&gt;-->
+
+
+
 
 </RelativeLayout>
