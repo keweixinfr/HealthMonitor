@@ -58,6 +58,7 @@ public class MainActivity extends Activity implements GoogleApiClient.Connection
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
+        Log.w("mytag","google play connected");
 
     }
 
@@ -79,7 +80,7 @@ public class MainActivity extends Activity implements GoogleApiClient.Connection
                 this, Manifest.permission.BODY_SENSORS);
         if (permissionCheck != PackageManager.PERMISSION_GRANTED) {
             //如果我们没有获得权限
-            Log.d("Permission Status:", "permission NO ");
+            Log.w("mytag:", "permission NO ");
 
             if (ActivityCompat.shouldShowRequestPermissionRationale(this,
                     Manifest.permission.BODY_SENSORS)) {
@@ -96,7 +97,7 @@ public class MainActivity extends Activity implements GoogleApiClient.Connection
 
         //注册一个监听器，以SENSOR_DELAY_NORMAL频率进行监听
         boolean sensorRegistered = mSensorManager.registerListener(mSensorEventListener, mHeartSensor, SensorManager.SENSOR_DELAY_NORMAL);
-        Log.d("Sensor Status:", "Sensor registered: " + (sensorRegistered ? "yes" : "no"));
+        Log.w("mytag:", "Sensor registered: " + (sensorRegistered ? "yes" : "no"));
         mGoogleApiClient.connect();
     }
 
