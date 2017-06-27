@@ -2,6 +2,8 @@ package com.example.android.healthmonitor;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -54,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         mSearchButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 token = mSearchObject.getText().toString();
+                if (isNetworkAvailable()){
                 // check there is a token in the edittext
                 if (mSearchObject.getText().length()!=0){
                     mSearchResult.setText("");
@@ -64,6 +67,9 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else {
                     mSearchResult.setText("Merci de donner un token!");
+                }}
+                else{
+                    mSearchResult.setText("Merci de connecter le réaseu !");
                 }
             }
         });
@@ -96,6 +102,12 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
+    }
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
 
